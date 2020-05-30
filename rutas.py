@@ -1,8 +1,3 @@
-'''
-Created on 4 nov. 2018
-
-@author: GustavoSignorele
-'''
 import os
 import random
 from flask import Flask, session, redirect, url_for, request, render_template
@@ -23,7 +18,7 @@ def index():
 @app.route('/guess')
 def guess():
     guess = int(request.args['guess']) if 'guess' in request.args else None
-    if request.args.get('guess'):
+    if guess:
         if guess == session['answer']:
             return render_template('win.html')
         else:
@@ -34,4 +29,4 @@ def guess():
                            guess=guess)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
